@@ -1,0 +1,122 @@
+@import "../../global.vars";
+@import "../../global.mixins";
+
+.sideBar {
+  width: 120px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-color: $sidebarColor;
+  z-index: 10;
+  transition: all 0.5s ease-in-out;
+  padding: 15px;
+  @include flex(column, space-between);
+  align-items: center;
+
+  &__wrapper {
+    width: 210px;
+    @include flex(row, center);
+  }
+  &__profile {
+    @include flex(row, space-between);
+    opacity: 0;
+    width: 210px;
+    height: 40px;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &__img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__name {
+    @include h3(#fff);
+  }
+
+  &__icons {
+    position: absolute;
+    top: 65px;
+    height: 400px;
+    @include flex(column, space-between);
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    margin-top: 20px;
+  }
+
+  &__iconsWrapper {
+    width: 75px;
+    height: 75px;
+    @include flex(row, center);
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.5s ease-in-out;
+
+    &-active {
+      background-color: $activeColor;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  &__categorysNames {
+    opacity: 0;
+    position: absolute;
+    @include h3($textColor);
+    transition: all 0.5s ease-in-out;
+  }
+
+  &__helpBlock {
+    @include flex(column, center);
+    align-items: flex-start;
+    width: 100%;
+    height: 75px;
+    font-size: 20px;
+    font-weight: bold;
+    @include h3($helpBlockColor);
+    letter-spacing: 5px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    margin-left: 5px;
+    &__helpBlock {
+      font-size: 25px;
+    }
+  }
+
+  &:hover {
+    width: 300px;
+    background: rgba($sidebarColor, 0.9);
+
+    .sideBar__iconsWrapper {
+      width: 300px;
+      @include flex(row, space-around);
+    }
+
+    .sideBar__categorysNames {
+      position: absolute;
+      opacity: 1;
+      right: 15px;
+    }
+
+    .sideBar__iconsWrapper {
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      &-active {
+        background-color: $openMenuColor;
+        width: 100%;
+      }
+    }
+
+    .sideBar__profile {
+      opacity: 1;
+    }
+    .sideBar__helpBlock {
+      opacity: 1;
+      margin-left: 25px;
+    }
+  }
+}
